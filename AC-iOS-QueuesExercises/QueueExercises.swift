@@ -3,7 +3,28 @@ import Foundation
 //1. Find the smallest element in a queue
 
 func smallestElement<T: Comparable>(in q: Queue<T>) -> T? {
-    return nil
+    
+    guard !q.isEmpty else { return nil }
+    
+    //want to point to the head of the Queue
+    //compare currentNode with storedNode,
+    // using while loop to go to the node until the Queue is empty
+    // compare currentNode with storedNode, if currentNode is smaller than storedNode, storedNode will become currentNode
+    // currentNode = currentNode.dequeue
+    
+    var queue = q // create a copy from a constant to variable
+    var currentElement = queue.dequeue() 
+    // 7 5 6
+    var smallestElement = currentElement
+    
+    while currentElement != nil {
+        
+        if currentElement! < smallestElement! {
+            smallestElement = currentElement
+        }
+        currentElement = queue.dequeue()
+    }
+    return smallestElement
 }
 
 //2. Find the sum of a queue of Ints
